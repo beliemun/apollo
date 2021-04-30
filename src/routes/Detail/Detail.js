@@ -17,6 +17,7 @@ const GET_MOVIE = gql`
         suggestions(id: $id) {
             id
             medium_cover_image
+            isLiked @client
         }
     }
 `;
@@ -51,7 +52,7 @@ const Detail = () => {
                     <SubTitle>Suggestions</SubTitle>
                     <MovieContainter>
                         {data?.suggestions?.map(movie =>
-                            <Movie key={movie.id} movie={movie} />
+                            <Movie key={movie.id} movie={movie} isLiked={movie.isLiked} />
                         )}
                     </MovieContainter>
                 </>
